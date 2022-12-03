@@ -1,0 +1,13 @@
+package StepDefination;
+
+import org.openqa.selenium.WebDriver;
+
+import PO.UpdateProfile;
+
+public class ProfileUpdateStepsDefination {
+
+	public WebDriver driver;
+	public UpdateProfile obj;
+	
+	
+}

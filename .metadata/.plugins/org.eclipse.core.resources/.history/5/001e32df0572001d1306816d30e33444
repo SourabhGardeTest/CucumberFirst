@@ -1,0 +1,56 @@
+package StepDefination;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import PO.Login;
+import PO.UpdateProfile;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class ProfileUpdateStepsDefination {
+
+	public WebDriver driver;
+	public UpdateProfile obj;
+	
+	@Given("Chrome browser") 
+	public void chrome_browser() {
+	    WebDriverManager.chromedriver().setup();
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		obj = new UpdateProfile(driver);
+
+	}
+
+	@When("User opens URL {string}")
+	public void user_opens_url(String url) {
+		driver.get(url);
+	    
+	}
+
+	@When("User enters Email as {string} and password as {string}")
+	public void user_enters_email_as_and_password_as(String uname, String password) {
+	    
+		obj.enterEmailAndPasswordAndClick(uname, password);
+		
+	}
+
+	@When("Click on Login")
+	public void click_on_login() {
+		obj.clickOnLogin();
+	}
+
+	
+
+	@When("User Click NewDemo")
+	public void user_click_new_demo() {
+	    obj.clickDemoAdmin();
+	}
+}

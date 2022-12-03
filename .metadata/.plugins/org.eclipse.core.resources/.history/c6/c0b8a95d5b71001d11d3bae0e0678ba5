@@ -1,0 +1,6 @@
+Feature: Login
+Scenario: Successfull Login With Valid Credentials
+Given Chrome browser
+When User opens URL "https://finix.pisystindia.com/admin/login"
+And User enters Email as "admin@gmail.com" and password as "123456"
+And Click on Login

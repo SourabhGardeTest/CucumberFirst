@@ -1,0 +1,14 @@
+Feature: UpdateProfile
+Scenario: Successfully Update the Admin Name
+Given Open Chrome browser
+When User opens URL "https://finix.pisystindia.com/admin/login"
+And User enters Email as "admin@gmail.com" and password as "123456"
+And Click on Login
+When User Click NewDemo
+When User Click Profile
+When User Click Update Profile
+And Enters New Name as "NewDemo Admin"
+And Clicks Update
+When user click on Log Out Link
+Then Page Title should now be "Login"
+And Close Browser

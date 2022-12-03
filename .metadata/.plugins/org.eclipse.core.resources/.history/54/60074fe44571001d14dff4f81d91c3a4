@@ -1,0 +1,81 @@
+package StepDefination;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+
+import PO.Login;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class SiteEngineerStepsDefination {
+	public WebDriver driver;
+	public Login obj; 
+	
+	@Given("Chrome browser") 
+	public void chrome_browser() {
+	    // Write code here that turns the phrase above into concrete actions
+		//System.setProperty("webdriver.chrome.driver", "C1111=-:\\Users\\SG69837\\cucumber_workspace\\Finix_cucumber\\chromedriver.exe");
+	    WebDriverManager.chromedriver().setup();
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		obj = new Login(driver);
+
+	}
+
+	@When("User opens URL {string}")
+	public void user_opens_url(String url) {
+	    // Write code here that turns the phrase above into concrete actions
+		driver.get(url);
+	    
+	}
+
+	@When("User enters Email as {string} and password as {string}")
+	public void user_enters_email_as_and_password_as(String uname, String password) {
+	    
+		obj.enterEmailAndPasswordAndClick(uname, password);
+		
+	    throw new io.cucumber.java.PendingException();
+	}
+
+	@When("Click on Login")
+	public void click_on_login() {
+	    // Write code here that turns the phrase above into concrete actions
+		obj.clickOnLogin();
+	    throw new io.cucumber.java.PendingException();
+	}
+
+	@Then("Page Title should be {string}")
+	public void page_title_should_be(String title) {
+	    // Write code here that turns the phrase above into concrete actions
+		obj.checkHeader(title);
+	}
+
+	@When("User Click NewDemo")
+	public void user_click_new_demo() {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
+	}
+
+	@When("user click on Log Out Link")
+	public void user_click_on_log_out_link() {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
+	}
+
+	@Then("Close Browser")
+	public void close_browser() {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
+	}
+
+}

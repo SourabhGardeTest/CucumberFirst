@@ -1,0 +1,92 @@
+package StepDefination;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import PO.UpdateProfile;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class ProfileUpdateStepsDefination {
+
+	public WebDriver driver;
+	public UpdateProfile obj;
+	
+	@Given("Chrome browser") 
+	public void open_chrome_browser() {
+	    WebDriverManager.chromedriver().setup();
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		obj = new UpdateProfile(driver);
+
+	}
+
+	@When("User opens URL {string}")
+	public void user_open_url(String url) {
+		driver.get(url);
+	    
+	}
+
+	@When("User enters Email as {string} and password as {string}")
+	public void user_enter_email_as_and_password_as(String uname, String password) {
+	    
+		obj.enterEmailAndPasswordAndClick(uname, password);
+		
+	}
+
+	@When("Click on Login")
+	public void click_on_loginbtn() {
+		obj.clickOnLogin();
+	}
+
+	@When("User Click NewDemo")
+	public void user_clicks_new_demo() {
+	    obj.clickDemoAdmin();
+	}
+	
+	@When("User Click Profile")
+	public void user_clicks_profile() {
+	    obj.clickProfile();
+	}
+
+	@When("User Click Update Profile")
+	public void user_clicks_update_profile() {
+	   obj.clickUpdateProfile();
+	}
+
+	@When("Enters New Name as {string}")
+	public void enter_new_name_as(String string) {
+	    obj.EnterNewName(string);
+	}
+
+	@When("Clicks Update")
+	public void click_update() {
+		obj.ClickUpdateBtn();
+	}
+
+	@Then("Name should be {string}")
+	public void name_should_bee(String string) {
+	    obj.CheckIfNameIsUpdated(string);
+	}
+	
+	@When("user click on Log Out Link")
+	public void user_clicks_on_log_out_link() {
+	    obj.clickLogOut();
+	}
+	
+	@Then("Page Title should now be {string}")
+	public void page_title_should_now_bee(String title) {
+		
+	}
+	@Then("Close Browser")
+	public void close_browsers() {
+	    driver.close();
+	}
+}

@@ -1,0 +1,11 @@
+Feature:Login
+Scenario:Successfull Login With Credentials
+Given User Launch Chrome browser
+When User opens URL "https://tms.pisystindia.com/admin/login"
+And User enters Email as "admin@gmail.com" and password as "123456"
+And Click on Login
+Then Page Title should be "DASHBOARD"
+When User Click NewDemo
+When user click on Log Out Link
+Then Page Title should be "Administrator Login"
+And Close Browser
